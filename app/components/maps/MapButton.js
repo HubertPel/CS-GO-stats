@@ -9,6 +9,7 @@ import {
 import images from '../../assets/images';
 
 const MapButton = props => {
+  console.log(props);
   return (
     <TouchableOpacity style={{height: 100, marginBottom: 20}}>
       <ImageBackground

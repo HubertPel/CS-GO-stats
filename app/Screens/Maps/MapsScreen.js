@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import MapButton from '../../components/maps/MapButton';
 import CustomBackground from '../../components/background/CustomBackground';
+import {openDatabase} from 'react-native-sqlite-storage';
 
+const db = openDatabase({
+  name: 'matches',
+});
 const MapsScreen = () => {
   const [maps, setMaps] = useState([]);
   const getMaps = () => {
@@ -27,7 +31,7 @@ const MapsScreen = () => {
     let view = [];
 
     maps.map((item, index) => {
-      view.push(<MapButton name={item.map} key={index} />);
+      view.push(<MapButton name={item.map} slug={item.slug} key={index} />);
     });
 
     return view;
