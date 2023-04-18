@@ -107,8 +107,8 @@ const App = () => {
 
   useEffect(() => {
     // createTable();
-    //createMapTable();
-    //insertMapData();
+    // createMapTable();
+    // insertMapData();
     //getMaps();
   }, []);
 

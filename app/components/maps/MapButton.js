@@ -11,14 +11,16 @@ import images from '../../assets/images';
 const MapButton = props => {
   console.log(props);
   return (
-    <TouchableOpacity style={{height: 100, marginBottom: 20}}>
+    <TouchableOpacity
+      style={{height: 100, marginBottom: 20}}
+      onPress={props.onPress}>
       <ImageBackground
         source={images.horizontalMaps[props.slug]}
         resizeMode={'cover'}
         style={{height: '100%', flexDirection: 'row'}}
         imageStyle={{opacity: 0.6}}>
         <View style={{flex: 2, justifyContent: 'flex-end'}}>
-          <Text style={{marginLeft: 20, fontSize: 30}}>
+          <Text style={{marginLeft: 20, fontSize: 22, fontWeight: 'bold'}}>
             {props.name.toUpperCase()}
           </Text>
         </View>

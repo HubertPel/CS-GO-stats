@@ -7,25 +7,34 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 const {Navigator, Screen} = createNativeStackNavigator();
 import HomeScreen from './Screens/HomeScreen/HomeScreen';
 import MapsScreen from './Screens/Maps/MapsScreen';
+import MapContext, {MapProvider} from './contexts/MapContext';
+import MatchResultScreen from './Screens/MatchResult/MatchResultScreen';
 
 const AppNavigator = () => {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Navigator headerMode="none" initialRouteName="Maps">
-          <Screen
-            options={{headerShown: false}}
-            name="Home"
-            component={HomeScreen}
-          />
-          <Screen
-            options={{headerShown: false}}
-            name="Maps"
-            component={MapsScreen}
-          />
-        </Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <MapProvider>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Navigator headerMode="none" initialRouteName="Maps">
+            <Screen
+              options={{headerShown: false}}
+              name="Home"
+              component={HomeScreen}
+            />
+            <Screen
+              options={{headerShown: false}}
+              name="Maps"
+              component={MapsScreen}
+            />
+            <Screen
+              options={{headerShown: false}}
+              name="MatchResult"
+              component={MatchResultScreen}
+            />
+          </Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </MapProvider>
   );
 };
 

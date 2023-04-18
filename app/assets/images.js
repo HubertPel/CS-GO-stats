@@ -7,6 +7,9 @@ const images = {
     overpass: require('./maps-horizontal/overpass.png'),
     cobblestone: require('./maps-horizontal/cobblestone.png'),
     train: require('./maps-horizontal/train.png'),
+    nuke: require('./maps-horizontal/nuke.png'),
+    shortdust: require('./maps-horizontal/shortdust.png'),
+    lake: require('./maps-horizontal/lake.png'),
   },
   mapIcons: {
     boyard: require('./maps-icons/boyard_icon.png'),
@@ -16,6 +19,9 @@ const images = {
     overpass: require('./maps-icons/overpass_icon.png'),
     cobblestone: require('./maps-icons/cobblestone_icon.png'),
     train: require('./maps-icons/train_icon.png'),
+    nuke: require('./maps-icons/nuke_icon.png'),
+    shortdust: require('./maps-icons/shortdust_icon.png'),
+    lake: require('./maps-icons/lake_icon.png'),
   },
 };
 export default images;
