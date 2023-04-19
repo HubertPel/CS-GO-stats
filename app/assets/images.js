@@ -23,5 +23,13 @@ const images = {
     shortdust: require('./maps-icons/shortdust_icon.png'),
     lake: require('./maps-icons/lake_icon.png'),
   },
+  icons: {
+    check: require('./icons/check.png'),
+    check_white: require('./icons/check_white.png'),
+    equal_white: require('./icons/equal_white.png'),
+    x_white: require('./icons/x_white.png'),
+    two_arrows_up_white: require('./icons/two_arrows_up_white.png'),
+    two_arrows_down_white: require('./icons/two_arrows_down_white.png'),
+  },
 };
 export default images;

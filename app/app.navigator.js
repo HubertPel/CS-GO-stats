@@ -9,6 +9,8 @@ import HomeScreen from './Screens/HomeScreen/HomeScreen';
 import MapsScreen from './Screens/Maps/MapsScreen';
 import MapContext, {MapProvider} from './contexts/MapContext';
 import MatchResultScreen from './Screens/MatchResult/MatchResultScreen';
+import PromotionScreen from './Screens/Promotion/PromotionScreen';
+import KDAScreen from './Screens/KDA/KDAScreen';
 
 const AppNavigator = () => {
   return (
@@ -30,6 +32,16 @@ const AppNavigator = () => {
               options={{headerShown: false}}
               name="MatchResult"
               component={MatchResultScreen}
+            />
+            <Screen
+              options={{headerShown: false}}
+              name="Promotion"
+              component={PromotionScreen}
+            />
+            <Screen
+              options={{headerShown: false}}
+              name="KDA"
+              component={KDAScreen}
             />
           </Navigator>
         </NavigationContainer>
