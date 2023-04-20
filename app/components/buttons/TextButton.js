@@ -10,6 +10,7 @@ const TextButton = props => {
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 20,
       }}>
       <View>
         <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>
