@@ -9,10 +9,9 @@ import {
 import images from '../../assets/images';
 
 const MapButton = props => {
-  console.log(props);
   return (
     <TouchableOpacity
-      style={{height: 100, marginBottom: 20}}
+      style={{height: 100, marginTop: 20}}
       onPress={props.onPress}>
       <ImageBackground
         source={images.horizontalMaps[props.slug]}

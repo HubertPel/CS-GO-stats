@@ -9,20 +9,24 @@ const db = openDatabase({
   name: 'matches',
 });
 const MapsScreen = ({navigation}) => {
-  const {setMap, map} = useContext(MapContext);
+  const {setMap, map, matchType} = useContext(MapContext);
   const [maps, setMaps] = useState([]);
   const getMaps = () => {
     db.transaction(txn => {
-      txn.executeSql('SELECT * FROM maps;', [], (sqlTxn, res) => {
-        let len = res.rows.length;
-        if (len > 0) {
-          let maps = [];
-          for (let i = 0; i < len; i++) {
-            maps.push(res.rows.item(i));
+      txn.executeSql(
+        'SELECT * FROM maps where type = ?;',
+        [matchType],
+        (sqlTxn, res) => {
+          let len = res.rows.length;
+          if (len > 0) {
+            let maps = [];
+            for (let i = 0; i < len; i++) {
+              maps.push(res.rows.item(i));
+            }
+            setMaps(maps);
           }
-          setMaps(maps);
-        }
-      });
+        },
+      );
     });
   };
 
@@ -51,12 +55,7 @@ const MapsScreen = ({navigation}) => {
   }
 
   return (
-    <CustomBackground>
-      <View style={{alignItems: 'center', marginBottom: 30}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-          Wybierz ostatnio graną mapę
-        </Text>
-      </View>
+    <CustomBackground header={'Wybierz ostatnio graną mapę'}>
       {showMaps()}
       <View style={{marginTop: 50}}></View>
     </CustomBackground>

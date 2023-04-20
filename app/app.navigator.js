@@ -11,13 +11,18 @@ import MapContext, {MapProvider} from './contexts/MapContext';
 import MatchResultScreen from './Screens/MatchResult/MatchResultScreen';
 import PromotionScreen from './Screens/Promotion/PromotionScreen';
 import KDAScreen from './Screens/KDA/KDAScreen';
+import SaveMapScreen from './Screens/SaveMap/SaveMapScreen';
+import Dashboard from './Screens/Dashboard/Dashboard';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
+const Drawer = createDrawerNavigator();
 
 const AppNavigator = () => {
   return (
     <MapProvider>
       <SafeAreaProvider>
         <NavigationContainer>
-          <Navigator headerMode="none" initialRouteName="Maps">
+          <Navigator headerMode="none" initialRouteName="Dashboard">
             <Screen
               options={{headerShown: false}}
               name="Home"
@@ -42,6 +47,16 @@ const AppNavigator = () => {
               options={{headerShown: false}}
               name="KDA"
               component={KDAScreen}
+            />
+            <Screen
+              options={{headerShown: false}}
+              name="SaveMap"
+              component={SaveMapScreen}
+            />
+            <Screen
+              options={{headerShown: false}}
+              name="Dashboard"
+              component={Dashboard}
             />
           </Navigator>
         </NavigationContainer>

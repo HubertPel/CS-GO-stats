@@ -5,6 +5,7 @@ import BigButton from '../../components/buttons/BigButton';
 import images from '../../assets/images';
 import TextButton from '../../components/buttons/TextButton';
 import MapContext from '../../contexts/MapContext';
+import colors from '../../assets/colors';
 const MatchResultScreen = ({navigation}) => {
   const {setStatus} = useContext(MapContext);
 
@@ -14,26 +15,23 @@ const MatchResultScreen = ({navigation}) => {
   };
 
   return (
-    <CustomBackground>
-      <View style={{alignItems: 'center', marginBottom: 30}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Rezultat Meczu</Text>
-      </View>
+    <CustomBackground header={'Rezultat Meczu'}>
       <View>
         <BigButton
           icon={images.icons.check_white}
-          color={'#29a603'}
+          color={colors.green}
           text={'ZWYCIĘSTWO'}
           onPress={() => setMatchStatus('win')}
         />
         <BigButton
           icon={images.icons.equal_white}
-          color={'#c48d0c'}
+          color={colors.yellow}
           text={'REMIS'}
           onPress={() => setMatchStatus('draw')}
         />
         <BigButton
           icon={images.icons.x_white}
-          color={'#b30909'}
+          color={colors.red}
           text={'PORAŻKA'}
           onPress={() => setMatchStatus('lose')}
         />

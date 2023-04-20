@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {openDatabase} from 'react-native-sqlite-storage';
@@ -13,13 +14,14 @@ const App = () => {
       txn.executeSql(
         'CREATE TABLE IF NOT EXISTS matches (' +
           'id INTEGER PRIMARY KEY AUTOINCREMENT,' +
+          'type varchar(20),' +
           'status varchar(20),' +
           'map VARCHAR(200),' +
           'kills INTEGER,' +
           'deads INTEGER,' +
           'asists INTEGER,' +
           'promotion_status VARCHAR(5),' +
-          'created_at TIMESTAMP' +
+          'created_at NOT NULL DEFAULT CURRENT_TIMESTAMP' +
           ');',
         [],
         sqlTxn => {
@@ -105,11 +107,20 @@ const App = () => {
     });
   };
 
+  const dropMatches = () => {
+    db.transaction(txn => {
+      txn.executeSql('DROP TABLE matches;', [], (sqlTxn, res) => {
+        console.log('usnieto mecze');
+      });
+    });
+  };
+
   useEffect(() => {
-    // createTable();
-    // createMapTable();
+    createTable();
+    createMapTable();
     // insertMapData();
     //getMaps();
+    //dropMatches();
   }, []);
 
   return <AppNavigator />;

@@ -14,10 +14,7 @@ const PromotionScreen = ({navigation}) => {
   };
 
   return (
-    <CustomBackground>
-      <View style={{alignItems: 'center', marginBottom: 30}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Promocja</Text>
-      </View>
+    <CustomBackground header={'Promocja'}>
       <View>
         {(status == 'win' || status == 'draw') && (
           <BigButton
@@ -38,7 +35,7 @@ const PromotionScreen = ({navigation}) => {
           <BigButton
             icon={images.icons.two_arrows_down_white}
             color={'#b30909'}
-            text={'PORAŻKA'}
+            text={'SPADEK'}
             onPress={() => setPromStatusfnc('drop')}
           />
         )}
