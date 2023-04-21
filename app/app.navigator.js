@@ -14,7 +14,8 @@ import KDAScreen from './Screens/KDA/KDAScreen';
 import SaveMapScreen from './Screens/SaveMap/SaveMapScreen';
 import Dashboard from './Screens/Dashboard/Dashboard';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import CustomDrawer from "./components/background/CustomDrawer";
+import CustomDrawer from './components/background/CustomDrawer';
+import HistoryScreen from './Screens/History/HistoryScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,7 +24,10 @@ const AppNavigator = () => {
     <MapProvider>
       <SafeAreaProvider>
         <NavigationContainer>
-          <Drawer.Navigator headerMode="none" initialRouteName="Dashboard" drawerContent={props => <CustomDrawer {...props} />}>
+          <Drawer.Navigator
+            headerMode="none"
+            initialRouteName="Dashboard"
+            drawerContent={props => <CustomDrawer {...props} />}>
             <Drawer.Screen
               options={{headerShown: false}}
               name="Home"
@@ -58,6 +62,11 @@ const AppNavigator = () => {
               options={{headerShown: false}}
               name="Dashboard"
               component={Dashboard}
+            />
+            <Drawer.Screen
+              options={{headerShown: false}}
+              name="History"
+              component={HistoryScreen}
             />
           </Drawer.Navigator>
         </NavigationContainer>

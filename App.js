@@ -54,28 +54,43 @@ const App = () => {
   };
 
   const insertMapData = () => {
-    db.transaction(txn => {
-      txn.executeSql(
-        'INSERT INTO maps (map,slug,type) VALUES' +
-          '("Boyard", "boyard", "wingman"),' +
-          '("Chalice", "chalice", "wingman"),' +
-          '("Vertigo","vertigo", "wingman"),' +
-          '("Inferno","inferno", "wingman"),' +
-          '("Overpass", "overpass", "wingman"),' +
-          '("Cobblestone","cobblestone", "wingman"),' +
-          '("Train", "train", "wingman"),' +
-          '("Nuke","nuke", "wingman"),' +
-          '("Shortdust","shortdust", "wingman"),' +
-          '("Lake","lake", "wingman");',
+    let mapExists = db.transaction(txn => {
+      return txn.executeSql(
+        'SELECT * FROM maps WHERE id=1',
         [],
-        sqlTxn => {
-          console.log('insert Created');
+        res => {
+          console.log('w select');
+          if (res.items.length == 0) {
+            db.transaction(txn => {
+              txn.executeSql(
+                'INSERT INTO maps (id, map,slug,type) VALUES' +
+                  '(1, "Boyard", "boyard", "wingman"),' +
+                  '(2, "Chalice", "chalice", "wingman"),' +
+                  '(3, "Vertigo","vertigo", "wingman"),' +
+                  '(4, "Inferno","inferno", "wingman"),' +
+                  '(5, "Overpass", "overpass", "wingman"),' +
+                  '(6, "Cobblestone","cobblestone", "wingman"),' +
+                  '(7, "Train", "train", "wingman"),' +
+                  '(8, "Nuke","nuke", "wingman"),' +
+                  '(9, "Shortdust","shortdust", "wingman"),' +
+                  '(10, "Lake","lake", "wingman");',
+                [],
+                sqlTxn => {
+                  console.log('insert Created');
+                },
+                error => {
+                  console.log(error);
+                },
+              );
+            });
+          }
         },
         error => {
           console.log(error);
         },
       );
     });
+    console.log(mapExists);
   };
   const insertUsers = () => {
     db.transaction(txn => {
@@ -108,7 +123,7 @@ const App = () => {
 
   const dropMatches = () => {
     db.transaction(txn => {
-      txn.executeSql('DROP TABLE matches;', [], (sqlTxn, res) => {
+      txn.executeSql('DROP TABLE map;', [], (sqlTxn, res) => {
         console.log('usnieto mecze');
       });
     });
@@ -117,7 +132,7 @@ const App = () => {
   useEffect(() => {
     createTable();
     createMapTable();
-    // insertMapData();
+    insertMapData();
     //getMaps();
     //dropMatches();
   }, []);
