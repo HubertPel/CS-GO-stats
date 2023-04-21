@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {Text, View} from 'react-native';
 import {openDatabase} from 'react-native-sqlite-storage';

@@ -14,6 +14,7 @@ import KDAScreen from './Screens/KDA/KDAScreen';
 import SaveMapScreen from './Screens/SaveMap/SaveMapScreen';
 import Dashboard from './Screens/Dashboard/Dashboard';
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import CustomDrawer from "./components/background/CustomDrawer";
 
 const Drawer = createDrawerNavigator();
 
@@ -22,43 +23,43 @@ const AppNavigator = () => {
     <MapProvider>
       <SafeAreaProvider>
         <NavigationContainer>
-          <Navigator headerMode="none" initialRouteName="Dashboard">
-            <Screen
+          <Drawer.Navigator headerMode="none" initialRouteName="Dashboard" drawerContent={props => <CustomDrawer {...props} />}>
+            <Drawer.Screen
               options={{headerShown: false}}
               name="Home"
               component={HomeScreen}
             />
-            <Screen
+            <Drawer.Screen
               options={{headerShown: false}}
               name="Maps"
               component={MapsScreen}
             />
-            <Screen
+            <Drawer.Screen
               options={{headerShown: false}}
               name="MatchResult"
               component={MatchResultScreen}
             />
-            <Screen
+            <Drawer.Screen
               options={{headerShown: false}}
               name="Promotion"
               component={PromotionScreen}
             />
-            <Screen
+            <Drawer.Screen
               options={{headerShown: false}}
               name="KDA"
               component={KDAScreen}
             />
-            <Screen
+            <Drawer.Screen
               options={{headerShown: false}}
               name="SaveMap"
               component={SaveMapScreen}
             />
-            <Screen
+            <Drawer.Screen
               options={{headerShown: false}}
               name="Dashboard"
               component={Dashboard}
             />
-          </Navigator>
+          </Drawer.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
     </MapProvider>

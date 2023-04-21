@@ -49,6 +49,7 @@ const Dashboard = ({navigation}) => {
         <SmallMatchResultBox
           result={item.status}
           prom={item.promotion_status}
+          key={'wingman-result-'+index}
         />,
       );
     });
